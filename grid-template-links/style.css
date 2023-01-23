@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: hsl(0, 0%, 20%);
+  display: grid;
+  place-items: center;
+}
+
+nav{
+  width: 400px;
+  margin:auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-template-columns: auto repeat(3, calc(10px + var(--active , 0) * 110px));
+  transition: grid-template-columns 0.35s ease;
+}
+
+ul li {
+  display: grid;
+  justify-content: end;
+  z-index: calc(var(--count) - var(--index));
+}
+
+ul li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  direction: ltr;
+  color: white;
+  background: hsl(0 0% 60% / 0.18);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  backdrop-filter: blur(40px);
+  transition: color 0.2s, background 0.2s;
+}
+
+
+
+ul li:not(:first-child) a:is(:hover, :focus) {
+  background: #f8f9fa;
+  color: #030507;
+  text-decoration: underline;
+}
+
+ul:is(:hover,:focus-within) {
+  --active: 1;
+}
